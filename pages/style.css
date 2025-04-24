@@ -1,0 +1,430 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Lora', serif;
+    background: #fff;
+    color: #1a1a1a;
+  }
+  
+  .container {
+    display: flex;
+    height: 98vh;
+  }
+  
+  .sidebar {
+    width: 220px;
+    background-color: #1f3556;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .sidebar li a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Cormorant', serif;
+    font-size: 20px;
+  }
+  
+  .sidebar li a:hover,
+  .sidebar li a:focus {
+    background-color: #d1d1d1;
+    color: #000;
+    padding: 6px 10px;
+    border-radius: 10px;
+  }
+  
+  .contenido {
+    flex: 1;
+    padding: 30px;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+  }
+  
+  .contenido > section {
+    display: none;
+  }
+  
+  .contenido > section:target {
+    display: block;
+  }
+  
+  .contenido > section.default {
+    display: block;
+  }
+  
+  .contenido h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  
+  .busqueda {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .busqueda input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px 0 0 8px;
+    font-family: 'Lora', serif;
+  }
+  
+  .busqueda button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #1f3556;
+    color: white;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    font-family: 'Lora', serif;
+  }
+  
+  .formulario {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .formulario label {
+    display: block;
+    margin-bottom: 15px;
+    font-family: 'Cormorant', serif;
+  }
+  
+  .formulario input,
+  .formulario select {
+    width: 100%;
+    padding: 8px;
+    background-color: #ddd;
+    border: none;
+    border-radius: 4px;
+    margin-top: 5px;
+    font-family: 'Lora', serif;
+  }
+  
+  .botones {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .botones button {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 12px;
+    background-color: #1f3556;
+    color: white;
+    cursor: pointer;
+    font-family: 'Lora', serif;
+  }
+  
+  .tabla-auditoria table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .tabla-auditoria th,
+  .tabla-auditoria td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    font-family: 'Lora', serif;
+  }
+  
+  .tabla-auditoria th {
+    background-color: #e6e6e6;
+    font-weight: bold;
+  }
+  
+  .tabla-auditoria .agregar {
+    padding: 10px 20px;
+    background-color: #1f3556;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Lora', serif;
+  }
+
+  .seccion {
+    display: none;
+  }
+  .seccion.activa {
+    display: block;
+  }
+  .btn-editar {
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Lora', serif;
+    font-size: 14px;
+  }
+  
+  .btn-editar:hover {
+    background-color: #45a049;
+  }
+  
+  .btn-eliminar {
+    background-color: #f44336; 
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Lora', serif;
+    font-size: 14px;
+  }
+  
+  .btn-eliminar:hover {
+    background-color: #d32f2f;
+  }
+  .contenedor-tabla {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 30px;
+    overflow-x: auto;
+    width: 100%;
+  }
+  
+  .tabla-procesos {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 500px;
+  }
+  
+  .encabezado-tabla {
+    background-color: #1f3763;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid black;
+  }
+  
+  .tabla-procesos td {
+    background-color: #d9d9d9;
+    padding: 10px;
+    font-family: 'Georgia', serif;
+    border: 1px solid black; /* bordes negros delgados */
+  }
+  
+  .columna-eliminar,
+  .columna-acciones {
+    width: 160px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  
+  .contenedor-agregar {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 30px;
+  }
+  
+  .btn-agregar {
+    background-color: #1f3763;
+    color: white;
+    font-family: 'Georgia', serif;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+
+  .btn-agregar:hover {
+    background-color: #2e4d8c;
+  }
+  
+  .btn-agregar-auditoria {
+    background-color: #1f3763;
+    color: white;
+    font-family: 'Georgia', serif;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .btn-agregar-auditoria:hover {
+    background-color: #2e4d8c;
+  }
+  .btn-cancelar-auditoria {
+    background-color: #1f3763;
+    color: white;
+    font-family: 'Georgia', serif;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .btn-cancelar-auditoria:hover {
+    background-color: #2e4d8c;
+  }
+  .tabla-contenedor {
+    margin-top: 30px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+  
+  .titulo-tabla {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #1f3556;
+  }
+  
+  .tabla-trabajadores {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .tabla-trabajadores th,
+  .tabla-trabajadores td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    font-family: 'Lora', serif;
+    font-size: 14px;
+  }
+  
+  .tabla-trabajadores th {
+    background-color: #e6e6e6;
+    text-align: left;
+  }
+  
+  .tabla-trabajadores tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .tabla-trabajadores .btn-editar,
+  .tabla-trabajadores .btn-eliminar {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Lora', serif;
+    font-size: 13px;
+  }
+  
+  
+  .btn-eliminar {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .btn-eliminar:hover {
+    background-color: #b02a37;
+  }
+  
+
+
+  .footer{
+    height: 2vh;
+    background-color: #d9d9d9;
+  }
+
+
+  .formulario-auditoria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 40px;
+    background-color: #f4f4f4;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .formulario-auditoria label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    color: #1a1a1a;
+  }
+  
+  .formulario-auditoria input {
+    margin-top: 6px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .formulario-auditoria input[type="date"] {
+    padding: 6px;
+  }
+  
+  .agregar {
+    background-color: #002D5B;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .agregar:hover {
+    background-color: #00509e;
+  }
+  
+  .btn-agregar {
+    background-color: #002D5B;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .btn-agregar:hover {
+    background-color: #00509e;
+  }
+  
+  /* Botones finales */
+  .formulario-auditoria > div {
+    grid-column: span 3;
+    display: flex;
+    justify-content: center;
+  }

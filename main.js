@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================
     const btnAgregarAuditoria = document.querySelector(".btn-agregar-auditoria");
     const btnCancelarAuditoria = document.querySelector(".btn-cancelar-auditoria");
-    const formAuditoria = document.getElementById("form-auditoria");
+    const formAuditoria = document.getElementById("formAuditoria");
   
     btnAgregarAuditoria.addEventListener("click", () => {
       formAuditoria.style.display = formAuditoria.style.display === "none" ? "block" : "none";

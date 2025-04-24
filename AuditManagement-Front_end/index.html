@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- SweetAlert2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <!-- SweetAlert2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <title>El Comité</title>
+  <link rel="stylesheet" href="Pages/style.css" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>El Comité</h2>
+      <nav>
+        <ul>
+          <li><a href="#" data-seccion="auditoria" class = "activo">Planes Auditoría</a></li>
+          <li><a href="#" data-seccion="trabajadores" class="activo">Trabajadores</a></li>
+          <li><a href="#" data-seccion="procesos" class = "activo">Procesos</a></li>
+          
+          <li><a href="#">Documentos</a></li>
+          <li><a href="#">Lista de Verificación</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="contenido">
+      
+      <section id="trabajadores" class="seccion activa">
+        <h2>Trabajadores</h2>
+        
+        <form class="formulario">
+          <label>Nombre
+            <input type="text" />
+          </label>
+          <label>Identificación
+            <input type="text" />
+          </label>
+          <label>Celular
+            <input type="text" />
+          </label>
+          <label>Correo
+            <input type="email" />
+          </label>
+          <label>Sector
+            <select>
+              <option>Seleccionar</option>
+              <option>Sector 1</option>
+              <option>Sector 2</option>
+            </select>
+          </label>
+          <div class="botones">
+            <button type="submit" class="guardar">Guardar</button>
+            <button type="reset" class="cancelar">Cancelar</button>
+          </div>
+        </form>
+        <!-- 🔍 Buscador -->
+<div class="busqueda">
+  <input type="text" id="busqueda-trabajador" placeholder="Buscar: Nombre/Id" />
+</div>
+
+<!-- 👥 Tabla de trabajadores (oculta al inicio) -->
+<div id="contenedor-tabla-trabajadores" class="tabla-contenedor" style="display: none;">
+  <h3 class="titulo-tabla">Lista de Trabajadores</h3>
+  <table class="tabla-trabajadores">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Identificación</th>
+        <th>Celular</th>
+        <th>Correo</th>
+        <th>Sector</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="tbody-trabajadores">
+      <!-- Filas dinámicas -->
+    </tbody>
+  </table>
+</div>
+
+      </section>
+
+      <!-- Vista Procesos -->
+      <section id="procesos" class="seccion">
+        <h2>Procesos</h2>
+
+        <div class="busqueda">
+          <input id="input-busqueda" type="text" placeholder="Buscar: Nombre/ID" />
+          <button id="btn-buscar">🔍</button>
+        </div>
+
+        <div class="contenedor-tabla">
+          <table class="tabla-procesos">
+            <thead>
+              <tr>
+                <th class="encabezado-tabla">Nombre</th>
+                <th class="encabezado-tabla">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-principal-body">
+              <!-- Sectores dinámicos -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="contenedor-agregar">
+          <button id="btn-agregar" class="btn-agregar">Agregar</button>
+        </div>
+      </section>
+
+      <!-- Vista Agregar Sector -->
+      <section id="vista-agregar-sector" class="seccion" >
+        <h2>Agregar nuevo sector</h2>
+
+        <div style="text-align: center; margin: 20px 0;">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <input
+              type="text"
+              id="input-nuevo-sector"
+              placeholder="Nombre del nuevo sector"
+              style="padding: 10px; width: 300px;"
+            />
+            <img src="img/logo-comite.jpg" alt="Logo El Comité" style="height: 80px;" />
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 40px; margin-left: 10px;">
+          <button id="btn-guardar" class="btn-agregar">Guardar</button>
+          <button id="btn-cancelar" class="btn-agregar">Cancelar</button>
+        </div>
+      </section>
+
+      <!-- Vista Editar Sector -->
+      <section id="vista-editar-sector" class="seccion">
+        <h2>Editar sector</h2>
+
+        <div style="text-align: center; margin: 20px 0;">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <input
+              type="text"
+              id="input-editar-sector"
+              placeholder="Nuevo nombre del sector"
+              style="padding: 10px; width: 300px;"
+            />
+            <img src="img/logo-comite.jpg" alt="Logo El Comité" style="height: 80px; vertical-align: middle;" />
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 40px;">
+          <button id="btn-guardar-edicion" class="btn-agregar">Guardar</button>
+          <button id="btn-cancelar-edicion" class="btn-agregar">Cancelar</button>
+        </div>
+        </section>
+
+      <!-- Sección: Planes de Auditoría -->
+      <section id="auditoria" class="seccion">
+        <h2>Planes de Auditoría</h2>
+        <div class="tabla-auditoria">
+          <table>
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Subtipo</th>
+                <th>Auditoría</th>
+                <th>Proceso</th>
+                <th>Líder Proceso</th>
+                <th>Personal a Auditar</th>
+                <th>Líder Auditor</th>
+                <th>Auditor</th>
+                <th>Estado</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Interna</td>
+                <td>Control</td>
+                <td>Lorem ipsum<br>dolor et sit amet</td>
+                <td>Lorem ipsum<br>dolor et sit amet</td>
+                <td>Agustino pelado<br>del socorro</td>
+                <td>Nombre de auditado 1,<br>nombre de auditado 2</td>
+                <td>Agustino pelado<br>del socorro</td>
+                <td>Agustino pelado<br>del socorro</td>
+                <td>Programada</td>
+                <td>02.04.27</td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="btn-agregar-auditoria">Agregar</button>
+          <form id="form-auditoria" class="formulario-auditoria" style="display: none;">
+            <label>Tipo
+              <input type="text" name="tipo" value ="Interna" required readonly/>
+            </label>
+            <label>Subtipo
+              <input type="text" name="subtipo" required />
+            </label>
+            <label>Auditoría
+              <input type="text" name="auditoria" required />
+            </label>
+            <label> Proceso
+              <input type="text" name="proceso" required />
+            </label>
+            <label for="lider_proceso">Líder de Proceso:</label>
+            <select name="lider_proceso" id="lider_proceso" style="padding: 10px; width: 100%; margin-top: 5px;">
+              <option value="">Selecciona un líder</option>
+            </select>
+            </label>
+            <label>Procesos a Auditar
+              <input type="text" name="personal_a_auditar" required/>
+            </label>
+            <label for="lider_auditor">Líder Auditor:</label>
+            <select name="lider_auditor" id="lider_auditor" style="padding: 10px; width: 100%; margin-top: 5px;">
+              <option value="">Selecciona un auditor</option>
+            </select>
+            </label>
+            <label>Auditor
+              <input type="text" name="auditor" required />
+            </label>
+            <label>Estado
+              <select style="padding: 10px; width: 100%; margin-top: 5px;">
+                <option>Seleccionar</option>
+                <option>En proceso de Verificación</option>
+                <option>Programada</option>
+              </select>
+            </label>
+            <label>Fecha
+              <input type="date" name="fecha" required />
+            </label>
+            <div style="display: flex; justify-content: center; gap: 40px; margin-left: 10px; margin-top: 20px;">
+              <button type="submit" class="btn-agregar">Guardar</button>
+              <button type="button" class="btn-cancelar-auditoria">Cancelar</button>
+            </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer class="footer">
+    <p>El Comité &copy; 2023</p>
+  <script src="./nuevo.js"></script>
+</body>
+</html>
+
